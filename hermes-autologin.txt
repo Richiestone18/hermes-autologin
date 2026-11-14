@@ -1,0 +1,45 @@
+sudo mkdir -p /etc/systemd/system/getty@tty1.service.d/ && echo -e "[Service]\nExecStart=\nExecStart=-/sbin/agetty --autologin $USER --noclear %I \$TERM" | sudo tee /etc/systemd/system/getty@tty1.service.d/override.conf > /dev/null && sudo systemctl daemon-reload && sudo systemctl restart getty@tty1
+
+
+
+
+echo "$USER ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/$USER > /dev/null && sudo chmod 0440 /etc/sudoers.d/$USER
+
+
+hermes config set approvals.mode off 
+hermes config set display.language es
+
+# Debian 13 estable con Mate
+wget https://raw.githubusercontent.com/Richiestone18/Debian-Mate-Postinstall/main/debian13-mate-postinstall.sh
+chmod +x debian13-mate-postinstall.sh
+sudo ./debian13-mate-postinstall.sh
+
+Debian Estable 13
+wget https://raw.githubusercontent.com/Richiestone18/Debian-13-Postinstall/main/debian13-postinstall.sh
+chmod +x debian13-postinstall.sh
+sudo bash debian13-postinstall.sh
+
+
+wget https://raw.githubusercontent.com/Richiestone18/Debian-Plymouth-Deb10/main/install-deb10-plymouth.sh
+chmod +x install-deb10-plymouth.sh
+sudo bash install-deb10-plymouth.sh
+sudo reboot
+
+
+curl -L -o geany-setup.sh https://github.com/Richiestone18/geany-setup/raw/refs/heads/main/geany-setup.sh \
+  && chmod +x geany-setup.sh \
+  && bash ./geany-setup.sh
+
+
+git clone https://justaguy.dev/drew/butterdwm.git
+cd butterdwm
+./install.sh
+
+git clone https://justaguy.dev/drew/butterbox.git
+cd butterbox
+./install.sh
+
+
+
+github token 
+
